@@ -4,6 +4,7 @@
 use PHPageBuilder\Repositories\PageTranslationRepository;
 
 foreach ((new PageTranslationRepository)->getAll(['route','updated_at']) as $sitemaproute) {
+    if($sitemaproute->route === '/sitemap.xml') continue;
     print('
     <url>
         <loc>'. phpb_config('general.base_url') . $sitemaproute->route .'</loc>
